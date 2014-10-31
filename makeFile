@@ -1,6 +1,6 @@
-treasure-hunter
-===============
+CC=g++
 
-Compile:
+CFLAGS=-c -Wall
 
+all: 
  g++ -std=c++11 treasure-hunter.cpp -o th

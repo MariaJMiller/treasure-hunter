@@ -1,6 +1,7 @@
-// th.h
-// Jason McGough, Maria Miller
-// Artificial Intelligence - Fall 2014
+/* th.h
+ * Jason McGough, Maria Miller
+ * Artificial Intelligence - Fall 2014 */
+
 
 #ifndef TH_H
 #define TH_H
@@ -11,6 +12,7 @@
 
 /* Generate random number */
 inline int randomGen() {
+
   // Seed with a real random value, if available
   std::random_device rd;
  
@@ -20,6 +22,5 @@ inline int randomGen() {
   return uniform_dist(e1);
 
 }
-
 
 #endif

@@ -6,13 +6,19 @@
 #define TH_H
 
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include <random>
+
 
 /* Generate random number */
 inline int randomGen() {
-  std::srand(std::time(0));
-  return std::rand() % 8;
+  // Seed with a real random value, if available
+  std::random_device rd;
+ 
+  // Choose a random mean between 0 and 6
+  std::default_random_engine e1(rd());
+  std::uniform_int_distribution<int> uniform_dist(0, 6);
+  return uniform_dist(e1);
+
 }
 
 

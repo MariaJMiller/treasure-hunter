@@ -75,8 +75,7 @@ inline int randomGen(int min, int max) {
 class Maze {
 private:
 // treasure list?
-/* Should treasure list be defined in Main()? Currently each Maze object
- * only has 1 treasure object --Maria */
+/* Treasure list created in Main() -- Maria */
 // trap list?
 
 public:

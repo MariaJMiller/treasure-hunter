@@ -1,6 +1,6 @@
-CC=g++ -std=c++11
+CC=g++
 
-CFLAGS=-c -Wall
+CFLAGS=-std=c++11
 
 all: 
- 	$(CC) th.cpp maze.cpp -o th
+	$(CC) $(CFLAGS) th.cpp maze.cpp -o th

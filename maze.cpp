@@ -10,7 +10,7 @@
 /* Constructor */
 Maze::Maze() {
 
-  /* Set all initial values to OPEN */
+  /* Set all cells to OPEN */
   int i, j = 0;
   for(i = 0; i < ROWS; ++i) {
     for(j = 0; j < COLS; ++j) {
@@ -21,6 +21,9 @@ Maze::Maze() {
   this->placeWalls();
   this->placeExit();
   this->placeTrsr();
+  this->placeBegin();
+  this->setTreasureWV();
+
 }
 
 /* Destructor */
@@ -65,7 +68,7 @@ void Maze::placeBegin() {
 
 }
 
- /* Place treasure and  set x, y values in mapTreasure. */
+ /* Place treasure and set x, y values in mapTreasure. */
 void Maze::placeTrsr() {
 
   /* BUG ** My compiler will not enter while statement 
@@ -78,6 +81,7 @@ void Maze::placeTrsr() {
   while(setT < 1) {
     i = randomGen(0,ROWS-1);
     j = randomGen(0,COLS-1);
+    /* Treasure location cannot overwrite map exit or begin. */
     if(this->map[i][j] != EXIT && this->map[i][j] != BEGIN) {
       this->map[i][j] = TRSR;
       mapTreasure.location_x = i;
@@ -85,6 +89,14 @@ void Maze::placeTrsr() {
       ++setT;
     }
   }
+}
+
+/* Set treasure weight and value */
+void setTreasureWV() {
+
+  this->mapTreasure.value = randomGen(1, T_MAX_VALUE);
+  this->mapTreasure.weight = randomGen(1, T_MAX_WEIGHT);
+
 }
 
 /* Exit of current maze stores values of next map's Begin x and y */

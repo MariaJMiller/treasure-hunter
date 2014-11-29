@@ -7,7 +7,7 @@
 #include <iostream>
 #include "maze.h"
 
-/* Constructor */
+/* Maze Constructor */
 Maze::Maze() {
 
   /* Set all cells to OPEN */
@@ -26,7 +26,7 @@ Maze::Maze() {
 
 }
 
-/* Destructor */
+/* Maze Destructor */
 Maze::~Maze() {
 
 }

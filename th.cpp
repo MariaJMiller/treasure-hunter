@@ -5,25 +5,44 @@
  // This is the main file
  
 #include <iostream>
+#include <vector>
 
 //#include "th.h"
 #include "maze.h"
 #include "ai.h"
 
+/* Size of large maze is MAZE_SIZE x MAZE_SIZE */
+const int MAZE_SIZE = 4;
 
 int main() {
 
-  /* Create x number of Mazes for final maze. */
-  // 
+  int i,j,k = 0;
+  /* largeMap vector contains pointer to each smaller maze that
+   * creates the final large map used by the AI */
+  std::vector<Maze*> largeMaze;
 
-  int i, j, m = 0;
+  /* Create MAZE_SIZE number of Mazes for final maze. */
+  for(i = 0; i < MAZE_SIZE; ++i) {
+
+    Maze* m = new Maze();
+    largeMaze.push_back(m);
+  }
+
+
 
   /* Debugging only 
+  for(k = 0; k < MAZE_SIZE; ++k) {
   for(i = 0; i < ROWS; ++i) {
     for(j = 0; j < COLS; ++j){
-      std::cout << M3.map[i][j] << " ";
+      std::cout << largeMaze[k]->map[i][j] << " ";
     }
     std::cout << std::endl;
+  }
+  std::cout << std::endl;
+  }
+
+  for(k = 0; k < MAZE_SIZE; ++k) {
+    std::cout << largeMaze[k]->mapTreasure.value << "\n";
   }
 */
                                          

@@ -2,6 +2,8 @@
  * Jason McGough, Maria Miller
  * Artificial Intelligence - Fall 2014 */
 
+ // This is the main file
+ 
 #include <iostream>
 
 #include "th.h"

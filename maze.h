@@ -2,6 +2,8 @@
  * Jason McGough, Maria Miller
  * Artificial Intelligence - Fall 2014 */
 
+ // Maze implementation header
+ 
 
 #ifndef MAZE_H
 #define MAZE_H

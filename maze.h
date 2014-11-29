@@ -9,6 +9,7 @@
 #define MAZE_H
 
 #include <random>
+#include <vector>
 
 
 /* Data for cell  value */
@@ -38,14 +39,14 @@ const int COLS = 7;
  };
 
  /* Random number generation function */
-inline int randomGen() {
+inline int randomGen(int min, int max) {
 
   // Seed with a real random value, if available
   std::random_device rd;
  
-  // Choose a random mean between 0 and 6
+  // Choose a random mean between min and max
   std::default_random_engine e1(rd());
-  std::uniform_int_distribution<int> uniform_dist(0, 6);
+  std::uniform_int_distribution<int> uniform_dist(min, max);
   return uniform_dist(e1);
 
 }
@@ -58,18 +59,13 @@ private:
 
 public:
 
+  Treasure mapTreasure;
+
   Maze();
   ~Maze();
   
-  node_t smMaze[ROWS][COLS] = {
-      { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN},
-      { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN},
-      { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN},
-      { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN},
-      { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN},
-      { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN},
-      { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN}
-  };
+  /* Initialized in constructor */
+  node_t map[ROWS][COLS];
 
   void placeWalls();
   void placeExit();

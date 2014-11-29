@@ -3,10 +3,21 @@
  * Artificial Intelligence - Fall 2014 */
  
 // Maze implementation file
- 
- 
- #include "maze.h"
- 
+
+#include <iostream>
+#include "maze.h"
+
+/* Constructor */
+Maze::Maze() {
+  this->placeWalls();
+  this->placeExit();
+  this->placeTrsr();
+}
+
+/* Destructor */
+Maze::~Maze() {
+  
+}
  
 /* Place walls in maze */
 void Maze::placeWalls() {
@@ -19,7 +30,6 @@ void Maze::placeWalls() {
     this->smMaze[i][j] = WALL;
   }
 } 
- 
  
 /* Place exit */
 void Maze::placeExit() {
@@ -43,7 +53,6 @@ void Maze::placeTrsr() {
     if(this->smMaze[i][j] != EXIT) {
       this->smMaze[i][j] = TRSR;
       ++setT;
-      std::cout << "PLACE TREASURE" << std::endl;
     }
   }
 }

@@ -3,4 +3,4 @@ treasure-hunter
 
 Compile:
 
- g++ -std=c++11 treasure-hunter.cpp -o th
+ g++ -std=c++11 th.cpp maze.cpp ai.cpp -o th

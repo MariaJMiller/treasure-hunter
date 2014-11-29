@@ -11,6 +11,7 @@
 #include "maze.h"
    
 #include <vector>
+
  
 // This structure will track the current and maximum weight
 // the AI can carry, as well as a list of the treasure collected 
@@ -24,9 +25,10 @@
  
  // This structure will contain the AI's copy of the map
  // I'll wait until we know more about the map to do this
+ // Const int ROWS, COLS defined in maze.h
  struct AI_Map
  {
-   node_t aiMaze[ROW]{COL];
+   node_t aiMaze[ROWS][COLS];
  };
  
  // the AI class itself 

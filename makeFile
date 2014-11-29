@@ -1,6 +1,6 @@
-CC=g++
+CC=g++ -std=c++11
 
 CFLAGS=-c -Wall
 
 all: 
- g++ -std=c++11 treasure-hunter.cpp -o th
+ 	$(CC) th.cpp maze.cpp -o th

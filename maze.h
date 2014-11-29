@@ -8,20 +8,18 @@
 #ifndef MAZE_H
 #define MAZE_H
 
-#include <iostream>
 #include <random>
-#include "th.h"
+
 
 /* Data for cell  value */
  enum node_t {WALL = 0, TRSR = 1, OPEN = 2, 
     TRAP = 3, EXIT = 4,  BEGIN = 5};
 
-const int ROWS = 7;
-const int COLS = 7;
-
 // Arbitrary max number of wall cells in 7x7 maze.
 const int WALL_MAX = 15;
 
+const int ROWS = 7;
+const int COLS = 7;
 
 // Treasure object, stores location, value and weight
  struct Treasure
@@ -37,9 +35,22 @@ const int WALL_MAX = 15;
  {
    int location_x;
    int location_y;
- }
- 
+ };
 
+ /* Random number generation function */
+inline int randomGen() {
+
+  // Seed with a real random value, if available
+  std::random_device rd;
+ 
+  // Choose a random mean between 0 and 6
+  std::default_random_engine e1(rd());
+  std::uniform_int_distribution<int> uniform_dist(0, 6);
+  return uniform_dist(e1);
+
+}
+
+/* Maze class contains initial 7x7 maze */
 class Maze {
 private:
 // treasure list?
@@ -47,6 +58,9 @@ private:
 
 public:
 
+  Maze();
+  ~Maze();
+  
   node_t smMaze[ROWS][COLS] = {
       { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN},
       { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN},
@@ -57,8 +71,8 @@ public:
       { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN}
   };
 
-  void placeWalls()
-  void placeExit()
+  void placeWalls();
+  void placeExit();
   void placeTrsr();
   void trapTeleport();
 }; /* End Maze Class */

@@ -18,7 +18,7 @@
  {
    int max_weight;
    int rem_weight;
-   vector<Treasure> haul;
+   std::vector<Treasure> haul;
  };
  
  
@@ -44,9 +44,10 @@
    void incMorale() { ++morale; }
    void decMorale() { --morale; }
    
-   void checkMap();
    void findPath();
+   void checkMap();
    void updateMap();
+   void collectTreasure();
  };
  
  #endif

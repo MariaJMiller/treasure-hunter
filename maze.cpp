@@ -18,7 +18,6 @@ void Maze::placeWalls() {
     j = randomGen();
     this->smMaze[i][j] = WALL;
   }
-
 } 
  
  
@@ -31,6 +30,7 @@ void Maze::placeExit() {
   j = randomGen();
   this->smMaze[i][j] = EXIT;
 }
+
  
  // Place treasure
 void Maze::placeTrsr() {

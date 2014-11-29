@@ -38,6 +38,22 @@ const int COLS = 7;
    int location_y;
  };
 
+/* Exit object stores location exit and the entrance to "adjacent/next" map */
+ struct Exit
+ {
+    int location_x;
+    int location_y;
+    int next_x;
+    int next_y;
+ };
+
+/* Begin object, stores location. Needed to connect small maps into one large map */
+ struct Begin 
+ {
+    int location_x;
+    int location_y;
+ };
+
  /* Random number generation function */
 inline int randomGen(int min, int max) {
 
@@ -60,17 +76,22 @@ private:
 public:
 
   Treasure mapTreasure;
+  Exit mapExit;
+  Begin mapBegin;
 
   Maze();
   ~Maze();
   
-  /* Initialized in constructor */
+  /* Map is initialized in constructor */
   node_t map[ROWS][COLS];
 
   void placeWalls();
   void placeExit();
   void placeTrsr();
+  void placeBegin();
   void trapTeleport();
+  void setExitNext(int, int);
+
 }; /* End Maze Class */
 
 

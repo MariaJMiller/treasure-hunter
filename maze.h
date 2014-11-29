@@ -22,7 +22,29 @@ const int COLS = 7;
 // Arbitrary max number of wall cells in 7x7 maze.
 const int WALL_MAX = 15;
 
+
+// Treasure object, stores location, value and weight
+ struct Treasure
+ {
+   int location_x;
+   int location_y;
+   int value;
+   int weight;
+ };
+
+ // Trap object, stores location
+ struct Trap
+ {
+   int location_x;
+   int location_y;
+ }
+ 
+
 class Maze {
+private:
+// treasure list?
+// trap list?
+
 public:
 
   node_t smMaze[ROWS][COLS] = {
@@ -35,46 +57,12 @@ public:
       { OPEN,OPEN,OPEN,OPEN,OPEN,OPEN,OPEN}
   };
 
-  /* Place walls in maze */
-  void placeWalls() {
-
-    int i, j, setW = 0;
-
-    for(setW = 0; setW < WALL_MAX; ++setW) {
-      i = randomGen();
-      j = randomGen();
-      this->smMaze[i][j] = WALL;
-    }
-
-  }
-
-  /* Place exit */
-  void placeExit() {
-
-    int i, j = 0;
-
-    i = randomGen();
-    j = randomGen();
-    this->smMaze[i][j] = EXIT;
-
-  }
-
-  void placeTrsr() {
-
-    int setT, j, i =0;
-  
-    while(setT < 1) {
-      i = randomGen();
-      j = randomGen();
-      if(this->smMaze[i][j] != EXIT) {
-        this->smMaze[i][j] = TRSR;
-        ++setT;
-        std::cout << "PLACE TREASURE" << std::endl;
-      }
-    }
-
-  }
+  void placeWalls()
+  void placeExit()
+  void placeTrsr();
+  void trapTeleport();
 }; /* End Maze Class */
 
 
 #endif
+

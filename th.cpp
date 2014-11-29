@@ -8,6 +8,7 @@
 
 #include "th.h"
 #include "maze.h"
+#include "ai.h"
 
 
 int main() {
@@ -36,3 +37,4 @@ int main() {
 
 
 } // end main()
+

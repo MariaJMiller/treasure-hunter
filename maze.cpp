@@ -92,18 +92,10 @@ void Maze::placeTrsr() {
 }
 
 /* Set treasure weight and value */
-void setTreasureWV() {
+void Maze::setTreasureWV() {
 
   this->mapTreasure.value = randomGen(1, T_MAX_VALUE);
   this->mapTreasure.weight = randomGen(1, T_MAX_WEIGHT);
-
-}
-
-/* Exit of current maze stores values of next map's Begin x and y */
-void Maze::setExitNext(int x, int y) {
-
-  this->mapExit.next_x = x;
-  this->mapExit.next_y = y;
 
 }
 

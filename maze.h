@@ -56,16 +56,15 @@ inline int randomGen(int min, int max) {
    int location_y;
  };
 
-/* Exit object stores location exit and the entrance to "adjacent/next" map */
+/* Exit object stores location of exit */
  struct Exit
  {
     int location_x;
     int location_y;
-    int next_x;
-    int next_y;
+ 
  };
 
-/* Begin object, stores location. Needed to connect small maps into one large map */
+/* Begin object, stores location. */
  struct Begin 
  {
     int location_x;
@@ -98,7 +97,6 @@ public:
   void placeBegin();
   void setTreasureWV();
   void trapTeleport();
-  void setExitNext(int, int);
 
 }; /* End Maze Class */
 

@@ -13,22 +13,27 @@
 
 #include <math.h>
  
- 
+ // TODO: test me
  // Checks the hunter's bag. If this returns true, 
  // then the hunter should start looking for the exit
- bool Hunter::isBagFull(Treasure* list)
+ bool Hunter::isBagFull(std::vector<Treasure*>& list)
  {
-  if(bag.rem_weight == 0)
-  {
-    return true;
-  }
+   if(bag.rem_weight == 0)
+   {
+     return true;
+   }
+   
+   // check the treasure list to see if the hunter can pick up anymore
+   if(list.empty()) return true;
   
-  // check the treasure list to see if the hunter can pick up anymore
-  
-  // if remaining treasure is too heavy, return true
+   // if any treasure can still fit, return false
+   for(auto& trsr : list)
+   {
+     if(trsr->weight < bag.rem_weight) return false;
+   }
  }
  
- 
+ //TODO: test me
  // Standard distance formula
  // finds the distance between the hunter and a piece of treasure
  float findDistance(int x1, int y1, int x2, int y2)
@@ -53,6 +58,8 @@
    // for each treasure in treasure list
      // findDistance(hunter.x, hunter.y, treasure.x, treasure.y);
    // pick minimal distance from treasure list
+   // target treasure must be able to fit into bag
+   // if it cannot, pick next closest treasure
    // return to pathfinding function as goal point
  }
  

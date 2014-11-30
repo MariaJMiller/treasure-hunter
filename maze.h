@@ -43,8 +43,8 @@ inline int randomGen(int min, int max) {
 // Treasure object, stores location, value and weight
  struct Treasure
  {
-   int location_x;
-   int location_y;
+   int x;
+   int y;
    int value;
    int weight;
  };
@@ -52,30 +52,28 @@ inline int randomGen(int min, int max) {
  // Trap object, stores location
  struct Trap
  {
-   int location_x;
-   int location_y;
+   int x;
+   int y;
  };
 
 /* Exit object stores location of exit */
  struct Exit
  {
-    int location_x;
-    int location_y;
+    int x;
+    int y;
  
  };
 
 /* Begin object, stores location. */
  struct Begin 
  {
-    int location_x;
-    int location_y;
+    int x;
+    int y;
  };
 
 /* Maze class contains initial 7x7 maze */
 class Maze {
 private:
-// treasure list?
-/* Treasure list created in Main() -- Maria */
 // trap list?
 
 public:

@@ -2,7 +2,7 @@
  * Jason McGough, Maria Miller
  * Artificial Intelligence - Fall 2014 */
  
- // AI implementation header
+// AI implementation header
  
  
 #ifndef AI_H
@@ -15,7 +15,7 @@
  
 // This structure will track the current and maximum weight
 // the AI can carry, as well as a list of the treasure collected 
- struct Bag
+ struct TreasureBag
  {
    int max_weight;
    int rem_weight;
@@ -25,10 +25,9 @@
  
  // This structure will contain the AI's copy of the map
  // I'll wait until we know more about the map to do this
- // Const int ROWS, COLS defined in maze.h
- struct AI_Map
+ struct AiMap
  {
-   node_t aiMaze[ROWS][COLS];
+   std::vector<node_t> map; 
  };
  
  // the AI class itself 
@@ -36,20 +35,26 @@
  class Hunter
  {
  private:
+   int x;
+   int y;
+   
    int morale;  // Just for fun, I'll explain later :D
+   TreasureBag bag;
+   AiMap known_map;
    
  public:
    Hunter();
    ~Hunter();
    
-   int getMorale();
+   int getMorale() { return morale; }
    void incMorale() { ++morale; }
    void decMorale() { --morale; }
    
-   void findPath();
-   void checkMap();
+   bool isBagFull(Treasure*);
+   Treasure findNearestTreasure();
+   void checkPath();
    void updateMap();
-   void collectTreasure();
+   void pathfinder();
  };
  
  #endif

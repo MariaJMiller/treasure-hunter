@@ -50,8 +50,8 @@ void Maze::placeExit() {
   i = randomGen(0,ROWS-1);
   j = randomGen(0,COLS-1);
   this->map[i][j] = EXIT;
-  this->mapExit.location_x = i;
-  this->mapExit.location_y = j;
+  this->mapExit.x = i;
+  this->mapExit.y = j;
 
 }
 
@@ -62,8 +62,8 @@ void Maze::placeBegin() {
   j = randomGen(0, COLS-1);
   if(this->map[i][j] != EXIT) {
     this->map[i][j] = BEGIN;
-    this->mapBegin.location_x = i;
-    this->mapBegin.location_y = j;
+    this->mapBegin.x = i;
+    this->mapBegin.y = j;
   }
 
 }
@@ -84,8 +84,8 @@ void Maze::placeTrsr() {
     /* Treasure location cannot overwrite map exit or begin. */
     if(this->map[i][j] != EXIT && this->map[i][j] != BEGIN) {
       this->map[i][j] = TRSR;
-      mapTreasure.location_x = i;
-      mapTreasure.location_y = j;
+      mapTreasure.x = i;
+      mapTreasure.y = j;
       ++setT;
     }
   }

@@ -8,8 +8,8 @@
 #include <vector>
 
 //#include "th.h"
-#include "maze.h"
-#include "ai.h"
+#include "maze.cpp"
+#include "ai.cpp"
 
 /* Size of large maze is LG_ROWS*LG_COLS*/
 const int LG_ROWS = 4;

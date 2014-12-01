@@ -10,9 +10,6 @@
 #include "maze.cpp"
 #include "ai.cpp"
 
-/* Size of large maze is LM_ROWS*LM_COLS*/
-const int LM_ROWS = 4;
-const int LM_COLS = 4; 
 
 
 int main() {

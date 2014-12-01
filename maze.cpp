@@ -5,6 +5,8 @@
 // Maze implementation file
 
 #include <iostream>
+#include <stdlib.h>
+#include <ctime>
 #include "maze.h"
 
 /* Maze Constructor */
@@ -34,22 +36,22 @@ Maze::~Maze() {
 /* Place walls in maze */
 void Maze::placeWalls() {
 
-  int i, j, perc = 0;
+  int i, j = 0;
+  float perc = .5;
+  double random_value = (double)rand() / (RAND_MAX);
+  srand(time(0));
+
   for(i = 0; i < ROWS; ++i) {
     for(j = 0; j < COLS; ++j) {
-      /*
       random_value = (double)rand() / (RAND_MAX);
       if(random_value < perc){
-        A[i] = 1;
+        this->map[i][j]= WALL;
       }
-      else
-        A[i] = 0;
-    */
     }
-  }
+  } 
 
-} 
- 
+ }
+
 /* Place exit */
 void Maze::placeExit() {
  

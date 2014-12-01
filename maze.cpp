@@ -24,7 +24,7 @@ Maze::Maze() {
   this->placeExit();
   this->placeTrsr();
   this->placeBegin();
-  this->setTreasureWV();
+ // this->setTreasureWV();
 
 }
 
@@ -37,7 +37,7 @@ Maze::~Maze() {
 void Maze::placeWalls() {
 
   int i, j = 0;
-  float perc = .5;
+  float perc = .4;
   double random_value = (double)rand() / (RAND_MAX);
   srand(time(0));
 
@@ -84,6 +84,7 @@ void Maze::placeTrsr() {
    * when setT is declared on the same line as i and j. --Maria */
   int setT = 0;
   int j, i =0;
+  Treasure T;
 
   /* int setT, j, i = 0; */
   
@@ -93,14 +94,17 @@ void Maze::placeTrsr() {
     /* Treasure location cannot overwrite map exit or begin. */
     if(this->map[i][j] != EXIT && this->map[i][j] != BEGIN) {
       this->map[i][j] = TRSR;
-      mapTreasure.x = i;
-      mapTreasure.y = j;
+      T.x = i;
+      T.y = j;
+      T.value = randomGen(1, T_MAX_VALUE);
+      T.weight = randomGen(1, T_MAX_WEIGHT);
+      trsrList.push_back(T);
       ++setT;
     }
   }
 }
 
-/* Set treasure weight and value */
+/* Set treasure weight and value *
 void Maze::setTreasureWV() {
 
   this->mapTreasure.value = randomGen(1, T_MAX_VALUE);
@@ -108,3 +112,4 @@ void Maze::setTreasureWV() {
 
 }
 
+*/

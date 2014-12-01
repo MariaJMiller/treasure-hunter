@@ -16,9 +16,6 @@
  enum node_t {WALL = 0, TRSR = 1, OPEN = 2, 
     TRAP = 3, EXIT = 4,  BEGIN = 5};
 
-// Arbitrary max number of wall cells in maze.
-const int WALL_MAX = 150;
-
 /* Size of maze */
 const int ROWS = 30;
 const int COLS = 30;
@@ -78,9 +75,10 @@ private:
 
 public:
 
-  Treasure mapTreasure;
+  //Treasure mapTreasure;
   Exit mapExit;
   Begin mapBegin;
+  std::vector<Treasure>  trsrList;
 
   Maze();
   ~Maze();
@@ -92,7 +90,7 @@ public:
   void placeExit();
   void placeTrsr();
   void placeBegin();
-  void setTreasureWV();
+  //void setTreasureWV();
   void trapTeleport();
 
 }; /* End Maze Class */

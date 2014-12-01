@@ -14,16 +14,9 @@
 
 int main() {
 
-  int i,j,k = 0;
-
+  int i,j = 0;
+ 
   Maze map_1;
-  
-  for(i = 0; i < ROWS; ++i) {
-    for(j = 0; j < COLS; ++j) {
-        std::cout << map_1.map[i][j] << " ";
-    }
-    std::cout << std::endl;
-  }
 
 
                                          

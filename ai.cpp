@@ -12,6 +12,14 @@
 #include "ai.h"
 
 #include <math.h>
+
+ /* Constructor */
+ Hunter::Hunter() {
+
+    bag.max_weight = 60;
+    bag.rem_weight = 60;
+    
+ }
  
  // TODO: test me
  // Checks the hunter's bag. If this returns true, 

@@ -16,10 +16,13 @@
  /* Constructor */
  Hunter::Hunter() {
 
-    bag.max_weight = 60;
-    bag.rem_weight = 60;
-    
+    bag.max_weight = 120;
+    bag.rem_weight = 120;
+    chooseTreasure(this->aiMaze.trsrList);
+
  }
+
+ Hunter::~Hunter() {}
  
  // TODO: test me
  // Checks the hunter's bag. If this returns true, 
@@ -93,6 +96,18 @@
  void Hunter::pathfinder()
  {
    //probably A*
+ }
+
+ /* Choose the most treasure that will fit into bag */
+ void Hunter::chooseTreasure(std::vector<Treasure>& list) {
+
+  for(int i = 0; i < list.size(); ++i) {
+    if(list[i].weight < bag.rem_weight) {
+      grabList.push_back(list[i]);
+      bag.rem_weight -= list[i].weight;
+    }
+  }
+
  }
  
  

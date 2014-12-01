@@ -14,10 +14,12 @@
 
 int main() {
 
-  int i,j = 0;
- 
-  Maze map_1;
+  Hunter chuck;
 
+  /*
+  for(int i = 0; i < chuck.grabList.size(); ++i) {
+    std::cout << chuck.grabList[i].value << " ";
+  } */
 
                                          
 } // end main()

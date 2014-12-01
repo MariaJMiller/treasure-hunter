@@ -21,15 +21,6 @@
    int rem_weight;
    std::vector<Treasure> haul;
  };
- 
- 
- // This structure will contain the AI's copy of the map
- // I'll wait until we know more about the map to do this
- struct AiMap
- {
-   std::vector<node_t> map; 
- };
-
 
  
  // the AI class itself 
@@ -41,12 +32,15 @@
    int y;
    
    int morale;  // Just for fun, I'll explain later :D
-   TreasureBag bag;
-   AiMap known_map;
    
  public:
    Hunter();
    ~Hunter();
+
+   std::vector<Treasure>  grabList;
+   TreasureBag bag;
+   /* The Maze the AI will traverse */
+   Maze aiMaze;
    
    int getMorale() { return morale; }
    void incMorale() { ++morale; }
@@ -57,6 +51,7 @@
    void checkPath();
    void updateMap();
    void pathfinder();
+   void chooseTreasure(std::vector<Treasure>&);
  };
  
  #endif

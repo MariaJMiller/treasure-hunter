@@ -22,10 +22,8 @@ Maze::Maze() {
 
   this->placeWalls();
   this->placeExit();
-  this->placeTrsr();
   this->placeBegin();
- // this->setTreasureWV();
-
+  this->placeTrsr();
 }
 
 /* Maze Destructor */
@@ -88,7 +86,7 @@ void Maze::placeTrsr() {
 
   /* int setT, j, i = 0; */
   
-  while(setT < 10) {
+  while(setT < MAX_T) {
     i = randomGen(0,ROWS-1);
     j = randomGen(0,COLS-1);
     /* Treasure location cannot overwrite map exit or begin. */
@@ -103,13 +101,3 @@ void Maze::placeTrsr() {
     }
   }
 }
-
-/* Set treasure weight and value *
-void Maze::setTreasureWV() {
-
-  this->mapTreasure.value = randomGen(1, T_MAX_VALUE);
-  this->mapTreasure.weight = randomGen(1, T_MAX_WEIGHT);
-
-}
-
-*/

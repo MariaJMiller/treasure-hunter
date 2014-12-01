@@ -34,11 +34,11 @@ Maze::~Maze() {
 /* Place walls in maze */
 void Maze::placeWalls() {
 
-  int i, j, setW = 0;
-  for(setW = 0; setW < WALL_MAX; ++setW) {
-    i = randomGen(0,ROWS-1);
-    j = randomGen(0,COLS-1);
-    this->map[i][j] = WALL;
+  int i, j, perc = 0;
+  for(i = 0; i < ROWS; ++i) {
+    for(j = 0; j < COLS; ++j) {
+      
+    }
   }
 
 } 
@@ -78,7 +78,7 @@ void Maze::placeTrsr() {
 
   /* int setT, j, i = 0; */
   
-  while(setT < 1) {
+  while(setT < 10) {
     i = randomGen(0,ROWS-1);
     j = randomGen(0,COLS-1);
     /* Treasure location cannot overwrite map exit or begin. */

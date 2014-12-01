@@ -16,12 +16,12 @@
  enum node_t {WALL = 0, TRSR = 1, OPEN = 2, 
     TRAP = 3, EXIT = 4,  BEGIN = 5};
 
-// Arbitrary max number of wall cells in 7x7 maze.
-const int WALL_MAX = 15;
+// Arbitrary max number of wall cells in maze.
+const int WALL_MAX = 150;
 
-/* Size of small map */
-const int ROWS = 7;
-const int COLS = 7;
+/* Size of maze */
+const int ROWS = 30;
+const int COLS = 30;
 
 /* Treasure max value and weight */
 const int T_MAX_VALUE = 100;
@@ -71,7 +71,7 @@ inline int randomGen(int min, int max) {
     int y;
  };
 
-/* Maze class contains initial 7x7 maze */
+/* Maze class contains maze */
 class Maze {
 private:
 // trap list?

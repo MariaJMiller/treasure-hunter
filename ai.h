@@ -29,6 +29,8 @@
  {
    std::vector<node_t> map; 
  };
+
+
  
  // the AI class itself 
  // major functions of the AI should be placed here

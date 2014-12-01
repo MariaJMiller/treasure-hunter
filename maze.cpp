@@ -37,7 +37,14 @@ void Maze::placeWalls() {
   int i, j, perc = 0;
   for(i = 0; i < ROWS; ++i) {
     for(j = 0; j < COLS; ++j) {
-      
+      /*
+      random_value = (double)rand() / (RAND_MAX);
+      if(random_value < perc){
+        A[i] = 1;
+      }
+      else
+        A[i] = 0;
+    */
     }
   }
 

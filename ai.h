@@ -37,7 +37,6 @@
    Hunter();
    ~Hunter();
 
-   std::vector<Treasure>  grabList;
    TreasureBag bag;
    /* The Maze the AI will traverse */
    Maze aiMaze;
@@ -51,7 +50,6 @@
    void checkPath();
    void updateMap();
    void pathfinder();
-   void chooseTreasure(std::vector<Treasure>&);
  };
  
  #endif

@@ -12,6 +12,7 @@
 #include "ai.h"
 
 #include <math.h>
+#include <algorithm>
 
  /* Constructor */
  Hunter::Hunter() {
@@ -65,35 +66,32 @@
  // Finds the next piece of treasure the hunter will try to collect
  Treasure Hunter::findNearestTreasure(std::vector<Treasure>& list) 
  {
-    int i = 0;
-    float distance, temp;
+    int i, index = 0;
+    float distance1, distance2 = 0;
     Treasure T;
-    // TODO -- Check if list is empty
-    /* Get distance of first Treasure, then distances of remaining list */
-    distance = findDistance( this->x, this->y, list[0].x, list[0].y);
-    for(i = 1; i < list.size(); ++i) {
-      temp = findDistance( this->x, this->y, list[i].x, list[i].y); 
-      if(temp < distance) {
-        distance = temp; 
+
+    /* Get distance of each element in list */
+    for(i = 0; i < list.size() -1; ++i) {
+      distance1 = findDistance( this->x, this->y, list[i].x, list[i].y); 
+      distance2 = findDistance(this->x, this->y, list[i+1].x, list[i+1].y);
+      if(distance1 < distance2) {
         T = list[i];
+        index = i;
+      }
+      else {
+        T = list[i+1];
+        index = i + 1;
       }
     }
-    /* If closest treasure fits in bag, return */
-    if(T.weight <= bag.rem_weight) {
-      return T;
-    }
-    /* Else remove that element from the list and call findNearestTreasure */
-    else {
-     // list.erase(list.begin())
-      T = findNearestTreasure(list);
+
+    if(T.weight > bag.rem_weight) {
+      list.erase(list.begin() + index);
+      return findNearestTreasure(list);
     }
 
-   // for each treasure in treasure list
-     // findDistance(hunter.x, hunter.y, treasure.x, treasure.y);
-   // pick minimal distance from treasure list
-   // target treasure must be able to fit into bag
-   // if it cannot, pick next closest treasure
-   // return to pathfinding function as goal point
+    else {
+      return T;
+    }
 
  }
  

@@ -29,8 +29,6 @@ const int T_MAX_WEIGHT = 20;
 /* Max number of treasure on maze */
 const int MAX_T = 20;
 
-
-
  /* Random number generation function */
 inline int randomGen(int min, int max) {
 

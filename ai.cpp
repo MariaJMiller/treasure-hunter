@@ -13,6 +13,7 @@
 
 #include <math.h>
 #include <algorithm>
+#include <limits>
 
  /* Constructor */
  Hunter::Hunter() {
@@ -114,9 +115,68 @@
  
  
  // Pathfinding function, finds route to treasure
- void Hunter::pathfinder()
+ // awful and sloppy, but I'm ready to be done with this porject...
+ void Hunter::pathfinder(std::vector<Treasure>& list)
  {
-   //probably A*
+   XYCoords temp_pos = this->pos;
+   XYCoords goal = findNearestTreasure(list).pos;
+   
+   // similar to Dijkstra's, all outgoing distances are initially
+   // set to infinite.
+   float north = std::numeric_limits<float>::max();
+   float south = std::numeric_limits<float>::max();
+   float east = std::numeric_limits<float>::max();
+   float west = std::numeric_limits<float>::max();
+   
+   // this will be the minimal distance
+   float min_val = std::numeric_limits<float>::max();
+   
+   
+   // I'm forgetting to account for wall tiles here
+   
+   
+   // only calculate the north tile if we aren't at the north boundary
+   if(!temp_pos.y == 0)
+   {
+     temp_pos.y--;
+     north = findDistance(temp_pos, goal);
+     temp_pos.y++;
+   }
+   
+   // only calculate the south tile if we aren't at the south boundary
+   if(!temp_pos.y == 29)
+   {
+     temp_pos.y++;
+     south = findDistance(temp_pos, goal);
+     temp_pos.y--;
+   }
+   
+   // only calculate the west tile if we aren't at the west boundary 
+   if(!temp_pos.x == 0)
+   {
+     temp_pos.x--;
+     west = findDistance(temp_pos, goal);
+     temp_pos.x++;
+   }
+   
+   // only calculate the east tile if we aren't at the east boundary
+   if(!temp_pos.x == 29)
+   {
+     temp_pos.x++;
+     east = findDistance(temp_pos, goal);
+     temp_pos.x--;
+   }
+   
+   // min_val will be set to the smallest distance
+   if(north < min_val) min_val = north;
+   if(south < min_val) min_val = south;
+   if(east < min_val) min_val = east;
+   if(west < min_val) min_val = west;
+   
+   // tile with the smallest distance to goal will be chosen as the 
+   // destination tile.
+   
+   //not quite done yet
  }
  
  

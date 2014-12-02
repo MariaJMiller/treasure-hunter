@@ -8,6 +8,7 @@
 #ifndef AI_H
 #define AI_H
  
+#include "th.h"
 #include "maze.h"
    
 #include <vector>
@@ -28,8 +29,7 @@
  class Hunter
  {
  private:
-   int x;
-   int y;
+   XYCoords pos;
    
    int morale;  // Just for fun, I'll explain later :D
    

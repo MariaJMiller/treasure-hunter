@@ -47,14 +47,14 @@
  //TODO: test me
  // Standard distance formula
  // finds the distance between the hunter and a piece of treasure
- float findDistance(int x1, int y1, int x2, int y2)
+ float findDistance(XYCoords hunter, XYCoords trsr)
  {
    float distance, temp_x, temp_y;
    
-   temp_x = (x1 - x2);
+   temp_x = (hunter.x - trsr.x);
    temp_x *= temp_x;
    
-   temp_y = (y1 - y2);
+   temp_y = (hunter.y - trsr.y);
    temp_y *= temp_y;
    
    distance = sqrt(temp_x + temp_y);
@@ -72,8 +72,8 @@
 
     /* Get distance of each element in list */
     for(i = 0; i < list.size() -1; ++i) {
-      distance1 = findDistance( this->x, this->y, list[i].x, list[i].y); 
-      distance2 = findDistance(this->x, this->y, list[i+1].x, list[i+1].y);
+      distance1 = findDistance( this->pos, list[i].pos); 
+      distance2 = findDistance( this->pos, list[i+1].pos);
       if(distance1 < distance2) {
         T = list[i];
         index = i;

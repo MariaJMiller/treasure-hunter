@@ -8,6 +8,8 @@
 #ifndef MAZE_H
 #define MAZE_H
 
+
+#include "th.h"
 #include <random>
 #include <vector>
 
@@ -45,8 +47,7 @@ inline int randomGen(int min, int max) {
 // Treasure object, stores location, value and weight
  struct Treasure
  {
-   int x;
-   int y;
+   XYCoords pos;
    int value;
    int weight;
  };
@@ -54,23 +55,19 @@ inline int randomGen(int min, int max) {
  // Trap object, stores location
  struct Trap
  {
-   int x;
-   int y;
+   XYCoords pos;
  };
 
 /* Exit object stores location of exit */
  struct Exit
  {
-    int x;
-    int y;
- 
+   XYCoords pos;
  };
 
 /* Begin object, stores location. */
  struct Begin 
  {
-    int x;
-    int y;
+   XYCoords pos;
  };
 
 /* Maze class contains maze */

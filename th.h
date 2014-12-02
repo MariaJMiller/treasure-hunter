@@ -7,6 +7,14 @@
  
 #ifndef TH_H
 #define TH_H
- 
+
+
+struct XYCoords
+{
+  int x;
+  int y;
+};
+
+
 #endif
 

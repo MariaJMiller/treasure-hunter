@@ -108,6 +108,15 @@ void Maze::placeTrsr() {
   }
 }
 
+void Maze::printTreasureList() {
+  std::cout << " Value " << "Weight \n";
+  for(auto  i : this->trsrList) {
+    std::cout  <<  i.value << "    " << i.weight << "\n";
+  }
+}
+
+
+/* This could teleport to a wall, open, exit, start or treasure node */
 void Maze::trapTeleport() {
 
   int i, j, numTraps = 0;
@@ -129,7 +138,7 @@ void Maze::trapTeleport() {
           T.pos.y = j;
           T.jump.x = randomGen(0, ROWS-1);
           T.jump.y = randomGen(0, COLS-1);
-          this->trapList.push_back(trap);
+          this->trapList.push_back(T);
           ++numTraps;
         }
       }     

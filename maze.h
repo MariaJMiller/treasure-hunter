@@ -80,6 +80,7 @@ public:
   void placeTrsr();
   void placeBegin();
   void trapTeleport();
+  void printTreasureList();
 
 }; /* End Maze Class */
 

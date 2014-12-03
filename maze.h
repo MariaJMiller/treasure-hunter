@@ -28,6 +28,9 @@ const int T_MAX_WEIGHT = 20;
 /* Max number of treasure on maze */
 const int MAX_T = 20;
 
+/* Max number of traps on maze */
+const int MAX_TRAPS = 4;
+
 // Treasure object, stores location, value and weight
  struct Treasure
  {
@@ -40,6 +43,7 @@ const int MAX_T = 20;
  struct Trap
  {
    XYCoords pos;
+   XYCoords jump;
  };
 
 /* Exit object stores location of exit */
@@ -57,11 +61,10 @@ const int MAX_T = 20;
 /* Maze class contains maze */
 class Maze {
 private:
-// trap list?
+  std::vector<Trap> trapList;
 
 public:
 
-  //Treasure mapTreasure;
   Exit mapExit;
   Begin mapBegin;
   std::vector<Treasure>  trsrList;

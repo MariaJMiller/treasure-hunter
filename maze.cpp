@@ -24,6 +24,7 @@ Maze::Maze() {
   this->placeExit();
   this->placeBegin();
   this->placeTrsr();
+  this->trapTeleport();
 }
 
 /* Maze Destructor */
@@ -109,8 +110,8 @@ void Maze::placeTrsr() {
 
 void Maze::trapTeleport() {
 
-  int i,j = 0; 
-  XYCoords trap;
+  int i, j, numTraps = 0;
+  Trap T;
 
   float perc = .5;
   double random_value = (double)rand() / (RAND_MAX);
@@ -119,10 +120,18 @@ void Maze::trapTeleport() {
   for (i = 0; i <ROWS; ++i) {
     for (j = 0; j < COLS; ++j) {
       random_value = (double)rand() / (RAND_MAX);
+
+      // Use percolation probabilty to "randomly" place a MAX_TRAPS # of trap
       if(random_value < perc){
-        trap.x = i;
-        trap.y = j;
-        this->trapList.push_back(trap);
+        // Traps are only placed on open nodes 
+        if(this->map[i][j] == OPEN && numTraps < MAX_TRAPS){
+          T.pos.x = i;
+          T.pos.y = j;
+          T.jump.x = randomGen(0, ROWS-1);
+          T.jump.y = randomGen(0, COLS-1);
+          this->trapList.push_back(trap);
+          ++numTraps;
+        }
       }     
     }
   }  

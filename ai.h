@@ -44,7 +44,7 @@
    int getMorale() { return morale; }
    void incMorale() { ++morale; }
    void decMorale() { --morale; }
-   
+
    bool isBagFull(std::vector<Treasure*>&);
    Treasure findNearestTreasure(std::vector<Treasure>&);
    void checkPath();

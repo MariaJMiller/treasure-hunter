@@ -20,6 +20,8 @@
 
     bag.max_weight = 120;
     bag.rem_weight = 120;
+    this->pos = aiMaze.mapBegin;
+    pathfinder(this->aiMaze.trsrList);
 
  }
 
@@ -120,6 +122,8 @@
  {
    XYCoords temp_pos = this->pos;
    XYCoords goal = findNearestTreasure(list).pos;
+
+   std::cout << goal.x << " " << goal.y << "\n";
    
    // similar to Dijkstra's, all outgoing distances are initially
    // set to infinite.
@@ -167,6 +171,8 @@
      temp_pos.x--;
    }
    
+   std::cout << "COORDS " << north <<  " " << south << " " << east << " "  
+    << west << "\n";
    // min_val will be set to the smallest distance
    if(north < min_val) min_val = north;
    if(south < min_val) min_val = south;

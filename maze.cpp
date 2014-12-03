@@ -58,8 +58,8 @@ void Maze::placeExit() {
   i = randomGen(0,ROWS-1);
   j = randomGen(0,COLS-1);
   this->map[i][j] = EXIT;
-  this->mapExit.pos.x = i;
-  this->mapExit.pos.y = j;
+  this->mapExit.x = i;
+  this->mapExit.y = j;
 
 }
 
@@ -73,8 +73,8 @@ void Maze::placeBegin() {
     j = randomGen(0, COLS-1);
     if(this->map[i][j] != EXIT) {
       this->map[i][j] = BEGIN;
-      this->mapBegin.pos.x = i;
-      this->mapBegin.pos.y = j;
+      this->mapBegin.x = i;
+      this->mapBegin.y = j;
       ++set;
     }
   }

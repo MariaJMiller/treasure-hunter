@@ -46,18 +46,6 @@ const int MAX_TRAPS = 4;
    XYCoords jump;
  };
 
-/* Exit object stores location of exit */
- struct Exit
- {
-   XYCoords pos;
- };
-
-/* Begin object, stores location. */
- struct Begin 
- {
-   XYCoords pos;
- };
-
 /* Maze class contains maze */
 class Maze {
 private:
@@ -65,8 +53,8 @@ private:
 
 public:
 
-  Exit mapExit;
-  Begin mapBegin;
+  XYCoords mapExit;
+  XYCoords mapBegin;
   std::vector<Treasure>  trsrList;
 
   Maze();

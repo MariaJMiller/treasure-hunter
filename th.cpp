@@ -18,6 +18,9 @@ int main() {
 
   Hunter AI;
 
+  
+  
+  /*
   std::cout << "Treasure Value: \n";
 
   AI.aiMaze.printTreasureList();
@@ -45,7 +48,7 @@ int main() {
     std::cout << "\n";
   }
 
-
+  */
   // Display treasure collected
 
                                          

@@ -14,9 +14,30 @@
 
 int main() {
 
-  Hunter C;
+  int i, j = 0;
 
+  Hunter AI;
 
+  for(i = 0; i < ROWS; ++i) {
+    for(j = 0; j < COLS; ++j) {
+      if(AI.aiMaze.map[i][j] == WALL) {
+        std::cout << "X ";
+      }
+      else if(AI.aiMaze.map[i][j] == OPEN) {
+        std::cout << "- ";
+      }
+      else if(AI.aiMaze.map[i][j] == EXIT) {
+        std::cout << "E ";
+      }
+      else if(AI.aiMaze.map[i][j] == BEGIN) {
+        std::cout << "S ";
+      }
+      else {
+        std::cout << "0 ";
+      }
+    }
+    std::cout << std::endl;
+  }
 
                                          
 } // end main()

@@ -32,7 +32,7 @@
  // then the hunter should start looking for the exit
  bool Hunter::isBagFull(std::vector<Treasure>& list)
  {
-   bool list_empty = true;
+   
    
    if(bag.rem_weight == 0)
    {
@@ -40,6 +40,8 @@
    }
    
    // check to see if there is treasure left to collect
+   bool list_empty = true;  //assume all treasure is collected
+   
    for(auto& trsr : list)
    {
      if(!trsr.collected) list_empty = false; 
@@ -122,7 +124,7 @@
    else goal = findNearestTreasure(list).pos;
   
    
-   std::cout << goal.x << " " << goal.y << "\n";
+   std::cout << "Goal pos: " << goal.x << " " << goal.y << "\n";
    
    // similar to Dijkstra's, all outgoing distances are initially
    // set to "infinity".
@@ -137,40 +139,40 @@
    
    
    // only calculate the north tile if it isn't the north boundary or a wall
-   if(this->pos.y != 0)
+   if(this->pos.x != 0)
    {
-     north_tile.x = this->pos.x;
-     north_tile.y = this->pos.x - 1;
+     north_tile.y = this->pos.y;
+     north_tile.x = this->pos.x - 1;
      
      if(aiMaze.map[north_tile.x][north_tile.y] != 0)
        north = findDistance(north_tile, goal);
    }
    
    // only calculate the south tile if it isn't the south boundary or a wall
-   if(this->pos.y != 29)
+   if(this->pos.x != 29)
    {
-     south_tile.x = this->pos.x;
-     south_tile.y = this->pos.y + 1;
+     south_tile.y = this->pos.y;
+     south_tile.x = this->pos.x + 1;
      
      if(aiMaze.map[south_tile.x][south_tile.y] != 0)
        south = findDistance(south_tile, goal);
    }
    
    // only calculate the west tile if it isn't the west boundary or a wall 
-   if(this->pos.x != 0)
+   if(this->pos.y != 0)
    {
-     west_tile.x = this->pos.x - 1;
-     west_tile.y = this->pos.y;
+     west_tile.y = this->pos.y - 1;
+     west_tile.x = this->pos.x;
      
      if(aiMaze.map[west_tile.x][west_tile.y] != 0)
        west = findDistance(west_tile, goal);
    }
    
    // only calculate the east tile if it isn't the east boundary or a wall
-   if(this->pos.x != 29)
+   if(this->pos.y != 29)
    {
-     east_tile.x = this->pos.x + 1;
-     east_tile.y = this->pos.y;
+     east_tile.y = this->pos.y + 1;
+     east_tile.x = this->pos.x;
      
      if(aiMaze.map[east_tile.x][east_tile.y] != 0)
        east = findDistance(east_tile, goal);

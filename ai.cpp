@@ -97,14 +97,6 @@
  }
  
  
- // Checks hunter's surroundings for valid movements
- void Hunter::checkPath()
- {
-   // let's not allow diagonals
-   // then only 4 squares need checked
- }
- 
- 
  // Compares complete maze map with hunter's map
  // Up to 2 moves of map will be revealed
  // Revealed portions of the map stay revealed
@@ -119,20 +111,10 @@
  XYCoords Hunter::pathfinder(std::vector<Treasure>& list)
  {
    XYCoords north_tile;
-     north_tile.x = this->pos.x;
-     north_tile.y = this->pos.x - 1;
-   
    XYCoords south_tile;
-     south_tile.x = this->pos.x;
-     south_tile.y = this->pos.y + 1;
-   
    XYCoords east_tile;
-     east_tile.x = this->pos.x + 1;
-     east_tile.y = this->pos.y;
-   
    XYCoords west_tile;
-     west_tile.x = this->pos.x - 1;
-     west_tile.y = this->pos.y;
+   int flag;
    
    XYCoords goal = findNearestTreasure(list).pos;
    
@@ -144,27 +126,51 @@
    float south = std::numeric_limits<float>::max();
    float east = std::numeric_limits<float>::max();
    float west = std::numeric_limits<float>::max();
-   
-   int flag;
+  
    
    // this will be the minimal distance
    float min_val = std::numeric_limits<float>::max();
    
    
-   // I'm forgetting to account for wall tiles here
+   // only calculate the north tile if it isn't the north boundary or a wall
+   if(this->pos.y != 0)
+   {
+     north_tile.x = this->pos.x;
+     north_tile.y = this->pos.x - 1;
+     
+     if(aiMaze.map[north_tile.x][north_tile.y] != 0)
+       north = findDistance(north_tile, goal);
+   }
    
+   // only calculate the south tile if it isn't the south boundary or a wall
+   if(this->pos.y != 29)
+   {
+     south_tile.x = this->pos.x;
+     south_tile.y = this->pos.y + 1;
+     
+     if(aiMaze.map[south_tile.x][south_tile.y] != 0)
+       south = findDistance(south_tile, goal);
+   }
    
-   // only calculate the north tile if we aren't at the north boundary
-   if(!this->pos.y == 0) north = findDistance(north_tile, goal);
+   // only calculate the west tile if it isn't the west boundary or a wall 
+   if(this->pos.x != 0)
+   {
+     west_tile.x = this->pos.x - 1;
+     west_tile.y = this->pos.y;
+     
+     if(aiMaze.map[west_tile.x][west_tile.y] != 0)
+       west = findDistance(west_tile, goal);
+   }
    
-   // only calculate the south tile if we aren't at the south boundary
-   if(!this->pos.y == 29) south = findDistance(south_tile, goal);
-   
-   // only calculate the west tile if we aren't at the west boundary 
-   if(!this->pos.x == 0) west = findDistance(west_tile, goal);
-   
-   // only calculate the east tile if we aren't at the east boundary
-   if(!this->pos.x == 29) east = findDistance(east_tile, goal);
+   // only calculate the east tile if it isn't the east boundary or a wall
+   if(this->pos.x != 29)
+   {
+     east_tile.x = this->pos.x + 1;
+     east_tile.y = this->pos.y;
+     
+     if(aiMaze.map[east_tile.x][east_tile.y] != 0)
+       east = findDistance(east_tile, goal);
+   }
    
    std::cout << "COORDS " << north <<  " " << south << " " << east << " "  
    << west << "\n";

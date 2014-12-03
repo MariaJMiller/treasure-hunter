@@ -47,7 +47,6 @@
    
    bool isBagFull(std::vector<Treasure*>&);
    Treasure findNearestTreasure(std::vector<Treasure>&);
-   void checkPath();
    void updateMap();
    XYCoords pathfinder(std::vector<Treasure>&);
  };

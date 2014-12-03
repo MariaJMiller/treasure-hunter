@@ -4,6 +4,13 @@
 
  // This is the main file
  
+ // TODO:
+ // Hunter needs a map representation
+     // Maybe we can use the start position token as the hunter?
+ // Actually collect treasure when hunter moves over it
+ // Go to exit when no more treasure can be collected
+ 
+ 
 #include <iostream>
 #include <vector>
 
@@ -23,11 +30,15 @@ int main() {
 
   while(game_loop)
   {
-    std::cout << " Start a treasure Hunt? [y/n]: ";
+    std::cout << "\n\n Start a new Treasure Hunt? [y/n]: ";
     std::cin >> choice;
     tolower(choice);
     
-    if(choice == 'y') game_loop = true;
+    if(choice == 'y')
+    {
+      game_loop = true;
+      system("clear");
+    }
     else 
     {
       game_loop = false;
@@ -35,6 +46,14 @@ int main() {
     }
     
     Hunter AI;
+    int trsr_value_sum = 0;
+    
+    // sums all treasure values in treasure list
+    for(auto& i : AI.aiMaze.trsrList)
+    {
+      trsr_value_sum += i.value;
+    }
+    
     
     // Prints out map to console (with ANSI colors!)
     std::cout << std::endl << std::endl << std::endl;
@@ -61,9 +80,12 @@ int main() {
       std::cout << std::endl;
     }
     
-    std::cout << "\nBag space remaining: " << AI.bag.rem_weight << " units\n";
-    std::cout << "Collected treasure value: \n";
-    std::cout << "Remaining treasure value: \n";
+    std::cout << std::endl;
+    std::cout << "Bag space remaining:\t\t" << AI.bag.rem_weight << " units\n";
+    std::cout << "Collected treasure value:\t" << "0" << " points \n";
+    std::cout << "Total treasure value:\t\t" << trsr_value_sum << " points \n";
+    std::cout << "Hunter's current position:\t(" 
+              << AI.getPosX() << ", " << AI.getPosY() << ")\n";
     std::cout << std::endl << std::endl << std::endl;
   }
   

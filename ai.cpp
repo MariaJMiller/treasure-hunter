@@ -20,12 +20,14 @@
 
     bag.max_weight = 120;
     bag.rem_weight = 120;
+    
+    pos = aiMaze.mapBegin;
 
  }
 
  Hunter::~Hunter() {}
  
- // TODO: test me
+
  // Checks the hunter's bag. If this returns true, 
  // then the hunter should start looking for the exit
  bool Hunter::isBagFull(std::vector<Treasure*>& list)
@@ -45,7 +47,7 @@
    }
  }
  
- //TODO: test me
+
  // Standard distance formula
  // finds the distance between the hunter and a piece of treasure
  float findDistance(XYCoords hunter, XYCoords trsr)
@@ -94,14 +96,6 @@
       return T;
     }
 
- }
- 
- // Updates the AI's map to include newly discovered tiles
- // Up to 2 moves of map will be revealed
- // Revealed portions of the map stay revealed
- void Hunter::updateMap()
- {
-   
  }
  
  
@@ -171,8 +165,8 @@
        east = findDistance(east_tile, goal);
    }
    
-   std::cout << "COORDS " << north <<  " " << south << " " << east << " "  
-   << west << "\n";
+//    std::cout << "COORDS " << north <<  " " << south << " " << east << " "  
+//    << west << "\n";
    
    // min_val will be set to the smallest distance
    // flag will keep track of which tile to return

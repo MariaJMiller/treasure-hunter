@@ -45,6 +45,9 @@
    void incMorale() { ++morale; }
    void decMorale() { --morale; }
    
+   int getPosX() { return pos.x; }
+   int getPosY() { return pos.y; }
+   
    bool isBagFull(std::vector<Treasure*>&);
    Treasure findNearestTreasure(std::vector<Treasure>&);
    void updateMap();

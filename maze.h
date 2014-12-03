@@ -50,6 +50,7 @@ inline int randomGen(int min, int max) {
    XYCoords pos;
    int value;
    int weight;
+   bool collected;
  };
 
  // Trap object, stores location

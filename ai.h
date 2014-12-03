@@ -45,13 +45,15 @@
    void incMorale() { ++morale; }
    void decMorale() { --morale; }
    
+   void setPos(XYCoords new_pos) { pos = new_pos;  }
+   
    int getPosX() { return pos.x; }
    int getPosY() { return pos.y; }
    
-   bool isBagFull(std::vector<Treasure*>&);
+   bool isBagFull(std::vector<Treasure>&);
    Treasure findNearestTreasure(std::vector<Treasure>&);
    void updateMap();
-   XYCoords pathfinder(std::vector<Treasure>&);
+   XYCoords pathfinder(std::vector<Treasure>&, bool);
  };
  
  #endif

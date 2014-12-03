@@ -30,20 +30,27 @@
 
  // Checks the hunter's bag. If this returns true, 
  // then the hunter should start looking for the exit
- bool Hunter::isBagFull(std::vector<Treasure*>& list)
+ bool Hunter::isBagFull(std::vector<Treasure>& list)
  {
+   bool list_empty = true;
+   
    if(bag.rem_weight == 0)
    {
      return true;
    }
    
-   // check the treasure list to see if the hunter can pick up anymore
-   if(list.empty()) return true;
+   // check to see if there is treasure left to collect
+   for(auto& trsr : list)
+   {
+     if(!trsr.collected) list_empty = false; 
+   }
+   
+   if(list_empty) return true;
   
    // if any treasure can still fit, return false
    for(auto& trsr : list)
    {
-     if(trsr->weight < bag.rem_weight) return false;
+     if(trsr.weight < bag.rem_weight) return false;
    }
  }
  
@@ -101,15 +108,19 @@
  
  // Pathfinding function, finds route to treasure
  // awful and sloppy, but I'm ready to be done with this porject...
- XYCoords Hunter::pathfinder(std::vector<Treasure>& list)
+ XYCoords Hunter::pathfinder(std::vector<Treasure>& list, bool find_exit)
  {
    XYCoords north_tile;
    XYCoords south_tile;
    XYCoords east_tile;
    XYCoords west_tile;
    int flag;
+   XYCoords goal;
    
-   XYCoords goal = findNearestTreasure(list).pos;
+   
+   if(find_exit == true) goal = this->aiMaze.mapExit;
+   else goal = findNearestTreasure(list).pos;
+  
    
    std::cout << goal.x << " " << goal.y << "\n";
    

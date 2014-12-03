@@ -122,9 +122,21 @@
    
    if(find_exit == true) goal = this->aiMaze.mapExit;
    else goal = findNearestTreasure(list).pos;
-  
-   
+ 
    std::cout << "Goal pos: " << goal.x << " " << goal.y << "\n";
+   
+   if(goal.x == this->pos.x && goal.y == this->pos.y)
+   {
+     if(find_exit)
+     {
+       std::cout << "Successfully exited the map!\n\n";
+       return this->pos;
+     }
+     else
+     {
+       // collect treasure somehow
+     }
+   }
    
    // similar to Dijkstra's, all outgoing distances are initially
    // set to "infinity".
@@ -144,7 +156,7 @@
      north_tile.y = this->pos.y;
      north_tile.x = this->pos.x - 1;
      
-     if(aiMaze.map[north_tile.x][north_tile.y] != 0)
+     if(this->aiMaze.map[north_tile.x][north_tile.y] != 0)
        north = findDistance(north_tile, goal);
    }
    
@@ -154,7 +166,7 @@
      south_tile.y = this->pos.y;
      south_tile.x = this->pos.x + 1;
      
-     if(aiMaze.map[south_tile.x][south_tile.y] != 0)
+     if(this->aiMaze.map[south_tile.x][south_tile.y] != 0)
        south = findDistance(south_tile, goal);
    }
    
@@ -164,7 +176,7 @@
      west_tile.y = this->pos.y - 1;
      west_tile.x = this->pos.x;
      
-     if(aiMaze.map[west_tile.x][west_tile.y] != 0)
+     if(this->aiMaze.map[west_tile.x][west_tile.y] != 0)
        west = findDistance(west_tile, goal);
    }
    
@@ -174,7 +186,7 @@
      east_tile.y = this->pos.y + 1;
      east_tile.x = this->pos.x;
      
-     if(aiMaze.map[east_tile.x][east_tile.y] != 0)
+     if(this->aiMaze.map[east_tile.x][east_tile.y] != 0)
        east = findDistance(east_tile, goal);
    }
    

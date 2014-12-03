@@ -16,7 +16,7 @@
 
 /* Data for cell  value */
  enum node_t {WALL = 0, TRSR = 1, OPEN = 2, 
-    TRAP = 3, EXIT = 4,  BEGIN = 5};
+    TRAP = 3, EXIT = 4,  BEGIN = 5, PATH = 6};
 
 /* Size of maze */
 const int ROWS = 30;

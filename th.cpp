@@ -5,10 +5,11 @@
  // This is the main file
  
  // TODO:
- // Hunter needs a map representation
-     // Maybe we can use the start position token as the hunter?
+     
  // Actually collect treasure when hunter moves over it
+ 
  // Go to exit when no more treasure can be collected
+     // I think i may have addressed this one at the bottom of the game loop
  
  
 #include <iostream>
@@ -76,7 +77,10 @@ int main() {
             std::cout << "\x1b[31;1mE \x1b[39;49m";
           }
           else if(AI.aiMaze.map[i][j] == BEGIN) {
-            std::cout << "S ";
+            std::cout << "H ";
+          }
+          else if(AI.aiMaze.map[i][j] == PATH) {
+            std::cout << ". ";
           }
           else {
             std::cout << "\x1b[33;1m0 \x1b[39;49m";
@@ -86,6 +90,7 @@ int main() {
         std::cout << std::endl;
       }
      
+      // Additional info print-out
       std::cout << std::endl;
       std::cout << "Bag space remaining:\t\t" << AI.bag.rem_weight 
         << " units\n";
@@ -97,14 +102,22 @@ int main() {
       std::cout << "Step: " << step << std::endl;
       std::cout << std::endl << std::endl << std::endl;
       
+      // If the bag is full, look for the exit instead of treasure
       bool find_exit = AI.isBagFull(AI.aiMaze.trsrList);
       
+      AI.aiMaze.map[AI.getPosX()][AI.getPosY()] = PATH;
+      
+      // Look for treasure/exit
       AI.setPos(AI.pathfinder(AI.aiMaze.trsrList, find_exit));
+      
+      // Move Hunter icon to new position
+      AI.aiMaze.map[AI.getPosX()][AI.getPosY()] = BEGIN;
       
       char junk;
       std::cin >> junk;
       ++step;
       
+      // Press q to quit current treasure hunt
       if(junk == 'q') break;
     }
   }

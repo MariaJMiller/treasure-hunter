@@ -6,6 +6,11 @@
  
  // TODO:
      
+ // BUG - findNearestTreasure not returning pos of actual nearest treasure
+ 
+ // BUG - pathfinder function not so great at finding paths. Not so much a
+ // bug as much as poor design choices...
+     
  // Actually collect treasure when hunter moves over it
  
  // Go to exit when no more treasure can be collected

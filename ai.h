@@ -20,6 +20,7 @@
  {
    int max_weight;
    int rem_weight;
+   int total_value;
  };
 
  

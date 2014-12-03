@@ -106,3 +106,24 @@ void Maze::placeTrsr() {
     }
   }
 }
+
+void Maze::trapTeleport() {
+
+  int i,j = 0; 
+  XYCoords trap;
+
+  float perc = .5;
+  double random_value = (double)rand() / (RAND_MAX);
+  srand(time(0));
+
+  for (i = 0; i <ROWS; ++i) {
+    for (j = 0; j < COLS; ++j) {
+      random_value = (double)rand() / (RAND_MAX);
+      if(random_value < perc){
+        trap.x = i;
+        trap.y = j;
+        this->trapList.push_back(trap);
+      }     
+    }
+  }  
+}

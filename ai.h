@@ -20,7 +20,6 @@
  {
    int max_weight;
    int rem_weight;
-   std::vector<Treasure> haul;
  };
 
  
@@ -31,7 +30,7 @@
  private:
    XYCoords pos;
    
-   int morale;  // Just for fun, I'll explain later :D
+   int morale;  // Reduce this if teleported away from treasure
    
  public:
    Hunter();

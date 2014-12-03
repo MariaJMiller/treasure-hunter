@@ -96,8 +96,7 @@
 
  }
  
- 
- // Compares complete maze map with hunter's map
+ // Updates the AI's map to include newly discovered tiles
  // Up to 2 moves of map will be revealed
  // Revealed portions of the map stay revealed
  void Hunter::updateMap()
@@ -121,7 +120,7 @@
    std::cout << goal.x << " " << goal.y << "\n";
    
    // similar to Dijkstra's, all outgoing distances are initially
-   // set to infinite.
+   // set to "infinity".
    float north = std::numeric_limits<float>::max();
    float south = std::numeric_limits<float>::max();
    float east = std::numeric_limits<float>::max();

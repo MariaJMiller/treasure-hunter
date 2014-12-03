@@ -46,8 +46,7 @@
    void decMorale() { --morale; }
    
    void setPos(XYCoords new_pos) { pos = new_pos;  }
-   
-   XYCoords getPos() { return pos; }
+  
    int getPosX() { return pos.x; }
    int getPosY() { return pos.y; }
    

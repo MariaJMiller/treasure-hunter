@@ -14,12 +14,9 @@
 
 int main() {
 
-  Hunter chuck;
+  Hunter C;
 
-  /*
-  for(int i = 0; i < chuck.grabList.size(); ++i) {
-    std::cout << chuck.grabList[i].value << " ";
-  } */
+
 
                                          
 } // end main()

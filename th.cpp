@@ -14,12 +14,30 @@
 
 int main() {
 
-  Hunter chuck;
+  int i, j = 0;
 
-  /*
-  for(int i = 0; i < chuck.grabList.size(); ++i) {
-    std::cout << chuck.grabList[i].value << " ";
-  } */
+  Hunter AI;
+
+  for(i = 0; i < ROWS; ++i) {
+    for(j = 0; j < COLS; ++j) {
+      if(AI.aiMaze.map[i][j] == WALL) {
+        std::cout << "X ";
+      }
+      else if(AI.aiMaze.map[i][j] == OPEN) {
+        std::cout << "- ";
+      }
+      else if(AI.aiMaze.map[i][j] == EXIT) {
+        std::cout << "E ";
+      }
+      else if(AI.aiMaze.map[i][j] == BEGIN) {
+        std::cout << "S ";
+      }
+      else {
+        std::cout << "0 ";
+      }
+    }
+    std::cout << std::endl;
+  }
 
                                          
 } // end main()

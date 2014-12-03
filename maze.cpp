@@ -35,7 +35,7 @@ Maze::~Maze() {
 void Maze::placeWalls() {
 
   int i, j = 0;
-  float perc = .4;
+  float perc = .3;
   double random_value = (double)rand() / (RAND_MAX);
   srand(time(0));
 
@@ -65,12 +65,17 @@ void Maze::placeExit() {
 void Maze::placeBegin() {
 
   int i, j = 0;
-  i = randomGen(0, ROWS-1);
-  j = randomGen(0, COLS-1);
-  if(this->map[i][j] != EXIT) {
-    this->map[i][j] = BEGIN;
-    this->mapBegin.pos.x = i;
-    this->mapBegin.pos.y = j;
+  int set = 0;
+
+  while(!set) {
+    i = randomGen(0, ROWS-1);
+    j = randomGen(0, COLS-1);
+    if(this->map[i][j] != EXIT) {
+      this->map[i][j] = BEGIN;
+      this->mapBegin.pos.x = i;
+      this->mapBegin.pos.y = j;
+      ++set;
+    }
   }
 
 }

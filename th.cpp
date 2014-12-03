@@ -18,6 +18,12 @@ int main() {
 
   Hunter AI;
 
+  std::cout << "Treasure Value: \n";
+
+  AI.aiMaze.printTreasureList();
+
+  std::cout << "\n";
+
   for(i = 0; i < ROWS; ++i) {
     for(j = 0; j < COLS; ++j) {
       if(AI.aiMaze.map[i][j] == WALL) {
@@ -30,14 +36,17 @@ int main() {
         std::cout << "E ";
       }
       else if(AI.aiMaze.map[i][j] == BEGIN) {
-        std::cout << "S ";
+        std::cout << "* ";
       }
       else {
         std::cout << "0 ";
       }
     }
-    std::cout << std::endl;
+    std::cout << "\n";
   }
+
+
+  // Display treasure collected
 
                                          
 } // end main()

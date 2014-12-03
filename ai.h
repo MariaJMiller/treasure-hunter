@@ -49,7 +49,7 @@
    Treasure findNearestTreasure(std::vector<Treasure>&);
    void checkPath();
    void updateMap();
-   void pathfinder(std::vector<Treasure>&);
+   XYCoords pathfinder(std::vector<Treasure>&);
  };
  
  #endif

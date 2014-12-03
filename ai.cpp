@@ -116,10 +116,27 @@
  
  // Pathfinding function, finds route to treasure
  // awful and sloppy, but I'm ready to be done with this porject...
- void Hunter::pathfinder(std::vector<Treasure>& list)
+ XYCoords Hunter::pathfinder(std::vector<Treasure>& list)
  {
-   XYCoords temp_pos = this->pos;
+   XYCoords north_tile;
+     north_tile.x = this->pos.x;
+     north_tile.y = this->pos.x - 1;
+   
+   XYCoords south_tile;
+     south_tile.x = this->pos.x;
+     south_tile.y = this->pos.y + 1;
+   
+   XYCoords east_tile;
+     east_tile.x = this->pos.x + 1;
+     east_tile.y = this->pos.y;
+   
+   XYCoords west_tile;
+     west_tile.x = this->pos.x - 1;
+     west_tile.y = this->pos.y;
+   
    XYCoords goal = findNearestTreasure(list).pos;
+   
+   std::cout << goal.x << " " << goal.y << "\n";
    
    // similar to Dijkstra's, all outgoing distances are initially
    // set to infinite.
@@ -127,6 +144,8 @@
    float south = std::numeric_limits<float>::max();
    float east = std::numeric_limits<float>::max();
    float west = std::numeric_limits<float>::max();
+   
+   int flag;
    
    // this will be the minimal distance
    float min_val = std::numeric_limits<float>::max();
@@ -136,47 +155,64 @@
    
    
    // only calculate the north tile if we aren't at the north boundary
-   if(!temp_pos.y == 0)
-   {
-     temp_pos.y--;
-     north = findDistance(temp_pos, goal);
-     temp_pos.y++;
-   }
+   if(!this->pos.y == 0) north = findDistance(north_tile, goal);
    
    // only calculate the south tile if we aren't at the south boundary
-   if(!temp_pos.y == 29)
-   {
-     temp_pos.y++;
-     south = findDistance(temp_pos, goal);
-     temp_pos.y--;
-   }
+   if(!this->pos.y == 29) south = findDistance(south_tile, goal);
    
    // only calculate the west tile if we aren't at the west boundary 
-   if(!temp_pos.x == 0)
-   {
-     temp_pos.x--;
-     west = findDistance(temp_pos, goal);
-     temp_pos.x++;
-   }
+   if(!this->pos.x == 0) west = findDistance(west_tile, goal);
    
    // only calculate the east tile if we aren't at the east boundary
-   if(!temp_pos.x == 29)
-   {
-     temp_pos.x++;
-     east = findDistance(temp_pos, goal);
-     temp_pos.x--;
-   }
+   if(!this->pos.x == 29) east = findDistance(east_tile, goal);
+   
+   std::cout << "COORDS " << north <<  " " << south << " " << east << " "  
+   << west << "\n";
    
    // min_val will be set to the smallest distance
-   if(north < min_val) min_val = north;
-   if(south < min_val) min_val = south;
-   if(east < min_val) min_val = east;
-   if(west < min_val) min_val = west;
+   // flag will keep track of which tile to return
+   if(north < min_val)
+   {
+     min_val = north;
+     flag = 1;
+   }
+   
+   if(south < min_val)
+   {
+     min_val = south;
+     flag = 2;
+   }
+   
+   if(east < min_val)
+   {
+     min_val = east;
+     flag = 3;
+   }
+   
+   if(west < min_val)
+   {
+     min_val = west;
+     flag = 4;
+   }
    
    // tile with the smallest distance to goal will be chosen as the 
    // destination tile.
-   
-   //not quite done yet
+   switch(flag)
+   {
+     case 1: return north_tile;
+       break;
+     case 2: return south_tile;
+       break;
+     case 3: return east_tile;
+       break;
+     case 4: return west_tile;
+       break;
+     default: 
+     {
+       std::cout << "Something has gone terribly wrong!\n\n";
+       return this->pos; // has to return something I think
+     }
+   }
  }
  
  

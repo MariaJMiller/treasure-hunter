@@ -99,7 +99,8 @@ int main() {
       std::cout << std::endl;
       std::cout << "Bag space remaining:\t\t" << AI.bag.rem_weight 
         << " units\n";
-      std::cout << "Collected treasure value:\t" << "0" << " points \n";
+      std::cout << "Collected treasure value:\t" << AI.bag.total_value 
+        << " points \n";
       std::cout << "Total treasure value:\t\t" << trsr_value_sum 
         << " points\n";
       std::cout << "Hunter's current position:\t(" 
@@ -117,6 +118,19 @@ int main() {
       
       // Move Hunter icon to new position
       AI.aiMaze.map[AI.getPosX()][AI.getPosY()] = BEGIN;
+      
+      for(auto& n : AI.aiMaze.trsrList)
+      {
+        if(AI.getPosX() == n.pos.x && AI.getPosY() == n.pos.y)
+        {
+          if(!n.collected)
+          {
+            n.collected = true;
+            AI.bag.rem_weight -= n.weight;
+            AI.bag.total_value += n.value;
+          }
+        }
+      }
       
       char junk;
       std::cin >> junk;

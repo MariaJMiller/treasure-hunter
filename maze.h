@@ -56,19 +56,9 @@ inline int randomGen(int min, int max) {
  struct Trap
  {
    XYCoords pos;
+   XYCoords target;
  };
 
-/* Exit object stores location of exit */
- struct Exit
- {
-   XYCoords pos;
- };
-
-/* Begin object, stores location. */
- struct Begin 
- {
-   XYCoords pos;
- };
 
 /* Maze class contains maze */
 class Maze {
@@ -78,8 +68,8 @@ private:
 public:
 
   //Treasure mapTreasure;
-  Exit mapExit;
-  Begin mapBegin;
+  XYCoords mapExit;
+  XYCoords mapBegin;
   std::vector<Treasure>  trsrList;
 
   Maze();
